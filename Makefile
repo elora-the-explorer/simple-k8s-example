@@ -17,6 +17,9 @@ docker-build:
 docker-up: docker-build
 	docker run -p 5001:5000 simple-app
 
+docker-test:
+	cd deployment-test && python -m pytest --url http://localhost:5001
+
 deploy: test docker-build
 	kubectl apply -f kubernetes/deployment.yaml && \
 	cd deployment-test && python -m pytest --url http://localhost:8080
