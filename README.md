@@ -12,7 +12,7 @@ Preparation before your interview: We would like you to prepare a small example 
 Just to confirm, this can be as simple or as complex as you wish - and doesn't need to work in full at time of the interview. Feel free to put together what you're most comfortable with, in the time you have.
 
 #### The API 
-This app provides a very simple api for greeting the user based on the provided language. It supports English, Maori, Dutch, and French. 
+This app provides a very simple api for greeting the user based on a provided language. It supports English, Maori, Dutch, and French. 
 
 ```
 GET /greet/<language>
@@ -24,6 +24,7 @@ GET /greet/maori
 Kia Ora!
 ```
 
+kubectl apply -f kubernetes/deployment.yaml
 ### Run the flask app locally (Windows 10)
 All instructions assume you are in the root directory of the project. 
 

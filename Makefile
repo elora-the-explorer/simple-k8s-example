@@ -1,6 +1,7 @@
 init: 
 	pip install -r flask-app/requirements.txt && \
 	pip install pytest
+	pip install requests
 
 app: 
 	export FLASK_APP=flask-app/simple_app && \
@@ -8,14 +9,27 @@ app:
 	python -m flask run
 
 test: 
-	python -m pytest
+	cd flask-app && python -m pytest
 
-docker-up: 
-	docker build -f docker/Dockerfile -t simple-app:latest . && \
+docker-build: 
+	docker build -f docker/Dockerfile -t simple-app:latest .
+
+docker-up: docker-build
 	docker run -p 5001:5000 simple-app
 
-deploy: 
-	kubectl apply -f kubernetes/deployment.yaml	
+deploy: test docker-build
+	kubectl apply -f kubernetes/deployment.yaml && \
+	cd deployment-test && python -m pytest --url http://localhost:8080
+
+tear-down: 
+	kubectl delete -f kubernetes/deployment.yaml
+
+
+
+
+	
+	
+
 
 
 
