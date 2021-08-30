@@ -30,6 +30,7 @@ All instructions assume you are in the root directory of the project.
 ### Pre-requisites 
 * Python 3.9 
 * Docker Desktop (with K8s enabled)
+* Kubectl set up with the docker-desktop context
 * Make
 
 
@@ -50,6 +51,7 @@ make test
 ```
 
 ### Run App in Docker 
+You'll need to have Docker Desktop running for this step
 
 ```
 make docker-up
@@ -57,6 +59,12 @@ make docker-up
 
 You should how be able to access the app at localhost:5001
 
+### Deploy App to K8s
+You'll need to have Kubernetes enabled in Docker Desktop and Kubectl set up with the docker-desktop context for this step
+
+```
+make deploy
+```
 
 
 
