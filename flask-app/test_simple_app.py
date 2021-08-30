@@ -1,5 +1,3 @@
-import pytest
-
 from simple_app import greet, greetings, unsupported_language_message
 
 def test_greet_defaults_to_maori():

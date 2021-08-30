@@ -29,42 +29,30 @@ All instructions assume you are in the root directory of the project.
 
 ### Pre-requisites 
 * Python 3.9 
-* Docker Desktop 
+* Docker Desktop (with K8s enabled)
+* Make
 
 
-#### Install Flask
+#### Install Dependencies
 ```
-pip install Flask
-```
-
-#### Export environment variables
-```
-export FLASK_APP=flask-app/simple_app
-export FLASK_ENV=development
+make init
 ```
 
-#### Run Flask 
+#### Run app locally
 ```
-python -m flask run
+make app
 ```
 
 ### Run Unit Tests 
 
 ```
-pip install pytest
-python -m pytest
+make test
 ```
 
 ### Run App in Docker 
 
-#### Build Image
 ```
-docker build -f docker/Dockerfile -t simple-app:latest .
-```
-
-#### Run Image 
-```
-docker run -p 5001:5000 simple-app
+make docker-up
 ```
 
 You should how be able to access the app at localhost:5001
