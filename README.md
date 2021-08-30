@@ -11,8 +11,26 @@ Preparation before your interview: We would like you to prepare a small example 
 
 Just to confirm, this can be as simple or as complex as you wish - and doesn't need to work in full at time of the interview. Feel free to put together what you're most comfortable with, in the time you have.
 
+#### The API 
+This app provides a very simple api for greeting the user based on the provided language. It supports English, Maori, Dutch, and French. 
+
+```
+GET /greet/<language>
+```
+
+example
+```
+GET /greet/maori
+Kia Ora!
+```
+
 ### Run the flask app locally (Windows 10)
 All instructions assume you are in the root directory of the project. 
+
+### Pre-requisites 
+* Python 3.9 
+* Docker Desktop 
+
 
 #### Install Flask
 ```
@@ -30,22 +48,27 @@ export FLASK_ENV=development
 python -m flask run
 ```
 
-#### Run Tests 
+### Run Unit Tests 
 
 ```
 pip install pytest
 python -m pytest
 ```
 
-#### The API 
-This app provides a very simple api for greeting the user based on the provided language. It supports English, Maori, Dutch, and French. 
+### Run App in Docker 
 
+#### Build Image
 ```
-GET /greet/<language>
+docker build -f docker/Dockerfile -t simple-app:latest .
 ```
 
-example
+#### Run Image 
 ```
-GET /greet/maori
-Kia Ora! 
+docker run -p 5001:5000 simple-app
 ```
+
+You should how be able to access the app at localhost:5001
+
+
+
+
